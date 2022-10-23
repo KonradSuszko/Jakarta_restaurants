@@ -1,0 +1,8 @@
+PUT http://localhost:9080/test/api/avatars/admin
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="avatar"; filename="uhlbrecht.png'
+
+< ../../src/main/resources/pobrane.png
+--boundary--
