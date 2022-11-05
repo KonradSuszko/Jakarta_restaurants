@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import pl.edu.pg.eti.kask.restaurants.restaurant.entity.Restaurant;
 
 import java.io.Serializable;
 
@@ -26,4 +27,6 @@ public class Dish implements Serializable {
     private float price;
 
     private int weight;
+
+    private Restaurant restaurant;
 }

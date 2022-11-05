@@ -15,10 +15,40 @@
             <article class="text--justified">
                 <header><h2><h:outputText value="#{restaurantView.restaurant.name}"/></h2></header>
                 <div class="restaurant__grid">
-                    <div class="restaurant__level_profession">
-                        Level <h:outputText value="#{restaurantView.restaurant.name}"/> <h:outputText
-                            value="#{restaurantView.restaurant.name}"/>
+                    <div class="restaurant_dishes">
+                        <header><h2>Menu</h2></header>
+                        <h:dataTable value="#{restaurantView.dishesModel.dishes}" var="dish" styleClass="data-table">
+                            <h:column>
+                                <f:facet name="header">Nazwa</f:facet>
+                                <h:link outcome="/dish/dish_view.xhtml" value="#{dish.name}">
+                                    <f:param name="id" value="#{dish.id}"/>
+                                </h:link>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Cena</f:facet>
+                                <h:outputText value="#{dish.price}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">edit</f:facet>
+                                <h:link outcome="/dish/dish_edit.xhtml" value="edit">
+                                    <f:param name="id" value="#{dish.id}"/>
+                                </h:link>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">delete</f:facet>
+                                <h:form>
+                                    <h:commandButton styleClass="ui-button ui-control" value="delete"
+                                                     action="#{restaurantView.deleteAction(dish)}"/>
+
+                                </h:form>
+                            </h:column>
+                        </h:dataTable>
                     </div>
+                </div>
+                <div>
+                    <h:link outcome="/dish/dish_create.xhtml" value="Add dish">
+                        <f:param name="restaurant" value="#{restaurantView.name}" />
+                    </h:link>
                 </div>
             </article>
     </ui:define>

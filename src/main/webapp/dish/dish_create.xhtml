@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/template/main.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="restaurant" value="#{dishCreate.restaurant}" required="false" />
+        <f:viewAction action="#{dishCreate.init()}" />
+    </f:metadata>
+
+    <ui:define name="content">
+        <h:outputStylesheet library="restaurant" name="css/restaurant_view.css"/><!-- Automatically relocated to head. -->
+        <article class="text--justified">
+            <header><h2>Edit dish info</h2></header>
+            <h:form class="dish__form">
+                <h:outputLabel for="name" value="Name:"/>
+                <h:inputText class="ui-control ui-input" id="name" value="#{dishCreate.dishCreateModel.name}"/>
+                <h:outputLabel for="price" value="Price:"/>
+                <h:inputText class="ui-control ui-input" id="price" value="#{dishCreate.dishCreateModel.price}"/>
+                <h:outputLabel for="weight" value="Weight:"/>
+                <h:inputTextarea class="ui-control" id="weight" value="#{dishCreate.dishCreateModel.weight}"/>
+                <h:outputLabel for="restaurants" value="Restaurant:"/>
+                <h:selectOneMenu id="restaurants"  value="#{dishCreate.dishCreateModel.restaurantModel}">
+                    <f:selectItems var="rest" value="#{dishCreate.restaurants}" itemLabel="#{rest.name}" itemValue="#{rest}" itemLabelEscaped="false"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Upload" immediate="false" action="#{dishCreate.saveAction()}"/>
+            </h:form>
+        </article>
+    </ui:define>
+
+</ui:composition>

@@ -24,7 +24,7 @@ public class Restaurant implements Serializable{
 
     private String name;
 
-    private List<Dish> menu;
-
     private int establishmentYear;
+
+    private double rating;
 }

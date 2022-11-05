@@ -6,12 +6,17 @@ import pl.edu.pg.eti.kask.restaurants.restaurant.entity.Restaurant;
 import pl.edu.pg.eti.kask.restaurants.restaurant.repository.RestaurantRepository;
 import pl.edu.pg.eti.kask.restaurants.user.context.UserContext;
 import pl.edu.pg.eti.kask.restaurants.user.repository.UserRepository;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
 
-@ApplicationScoped
+
+@Stateless
+@LocalBean
 @NoArgsConstructor
 public class RestaurantService {
 
@@ -41,8 +46,8 @@ public class RestaurantService {
         repository.create(restaurant);
     }
 
-    public void delete(Restaurant restaurant){
-        repository.delete(restaurant);
+    public void delete(String name){
+        repository.delete(find(name).get());
     }
 
     public void update(Restaurant restaurant) {

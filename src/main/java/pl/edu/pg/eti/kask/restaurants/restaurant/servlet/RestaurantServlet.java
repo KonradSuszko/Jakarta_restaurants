@@ -2,7 +2,7 @@ package pl.edu.pg.eti.kask.restaurants.restaurant.servlet;
 
 import pl.edu.pg.eti.kask.restaurants.servlet.HttpHeaders;
 import pl.edu.pg.eti.kask.restaurants.servlet.MimeTypes;
-import pl.edu.pg.eti.kask.restaurants.restaurant.service.DishService;
+import pl.edu.pg.eti.kask.restaurants.dish.service.DishService;
 import pl.edu.pg.eti.kask.restaurants.restaurant.service.RestaurantService;
 import pl.edu.pg.eti.kask.restaurants.restaurant.dto.CreateRestaurantRequest;
 import pl.edu.pg.eti.kask.restaurants.restaurant.dto.GetRestaurantResponse;
@@ -126,7 +126,7 @@ public class RestaurantServlet extends HttpServlet {
                 Optional<Restaurant> restaurant = restaurantService.find(name);
 
                 if (restaurant.isPresent()){
-                    restaurantService.delete(restaurant.get());
+                    restaurantService.delete(restaurant.get().getName());
                     response.setStatus(HttpServletResponse.SC_NO_CONTENT);
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);

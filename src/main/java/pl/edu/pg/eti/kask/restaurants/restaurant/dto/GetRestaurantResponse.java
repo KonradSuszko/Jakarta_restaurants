@@ -26,9 +26,9 @@ import java.util.function.Function;
 public class GetRestaurantResponse {
     private String name;
 
-    private List<Dish> menu;
-
     private int establishmentYear;
+
+    private double rating;
 
     /**
      * @return mapper for convenient converting entity object to dto object
@@ -37,7 +37,7 @@ public class GetRestaurantResponse {
         return restaurant -> GetRestaurantResponse.builder()
                 .name(restaurant.getName())
                 .establishmentYear(restaurant.getEstablishmentYear())
-                .menu(restaurant.getMenu())
+                .rating(restaurant.getRating())
                 .build();
     }
 

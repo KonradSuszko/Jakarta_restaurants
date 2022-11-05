@@ -25,14 +25,14 @@ import java.util.function.BiFunction;
 public class UpdateRestaurantRequest {
     private String name;
 
-    private List<Dish> menu;
+    private double rating;
 
     private int establishmentYear;
 
     public static BiFunction<Restaurant, UpdateRestaurantRequest, Restaurant> dtoToEntityUpdater() {
         return (restaurant, request) -> {
             restaurant.setName(request.getName());
-            restaurant.setMenu(request.getMenu());
+            restaurant.setRating(request.getRating());
             restaurant.setEstablishmentYear(request.getEstablishmentYear());
             return restaurant;
         };

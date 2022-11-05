@@ -36,7 +36,7 @@ public class RestaurantRepository implements Repository<Restaurant, String> {
 
     @Override
     public void delete(Restaurant entity){
-        throw new UnsupportedOperationException("Not implemented");
+        store.deleteRestaurant(entity);
     }
 
     @Override

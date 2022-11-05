@@ -26,15 +26,16 @@ import java.util.function.Supplier;
 public class CreateRestaurantRequest {
     private String name;
 
-    private List<Dish> menu;
 
     private int establishmentYear;
+
+    private double rating;
 
     public static Function<CreateRestaurantRequest, Restaurant> dtoToEntityMapper() {
         return request -> Restaurant.builder()
                 .name(request.getName())
-                .menu(request.getMenu())
                 .establishmentYear(request.getEstablishmentYear())
+                .rating(request.getRating())
                 .build();
     }
 

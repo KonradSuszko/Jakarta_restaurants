@@ -44,4 +44,6 @@ public class DishRepository implements Repository<Dish, Long> {
     public void update(Dish entity){
         store.updateDish(entity);
     }
+
+    public List<Dish> findByRestaurant(String name) {return store.findDishesByRestaurant(name);}
 }

@@ -1,7 +1,7 @@
 package pl.edu.pg.eti.kask.restaurants.configuration;
 
 import pl.edu.pg.eti.kask.restaurants.dish.entity.Dish;
-import pl.edu.pg.eti.kask.restaurants.restaurant.service.DishService;
+import pl.edu.pg.eti.kask.restaurants.dish.service.DishService;
 import pl.edu.pg.eti.kask.restaurants.restaurant.service.RestaurantService;
 import pl.edu.pg.eti.kask.restaurants.restaurant.entity.Restaurant;
 import pl.edu.pg.eti.kask.restaurants.user.entity.EnumRole;
@@ -66,31 +66,33 @@ public class InitializedData {
         userService.create(user);
         userService.create(boss);
         userService.create(adam);
+        Restaurant sushiNova = Restaurant.builder()
+                .name("Sushi Nova")
+                .establishmentYear(1997)
+                .rating(4.6)
+                .build();
+        Restaurant gyozilla = Restaurant.builder()
+                .name("Gyozilla")
+                .establishmentYear(2012)
+                .rating(4.8)
+                .build();
+        restaurantService.create(sushiNova);
+        restaurantService.create(gyozilla);
         Dish sushi = Dish.builder()
                 .name("Futomaki")
                 .id(new Long(0))
                 .price((float)19.9)
                 .weight(250)
+                .restaurant(sushiNova)
                 .build();
         Dish ramen = Dish.builder()
                 .name("Ramen tsumeken")
                 .id(new Long(1))
                 .price((float)49.9)
                 .weight(450)
+                .restaurant(gyozilla)
                 .build();
         dishService.create(sushi);
-        Restaurant sushiNova = Restaurant.builder()
-                .name("Sushi Nova")
-                .establishmentYear(1997)
-                .menu(Arrays.asList(sushi))
-                .build();
-        Restaurant gyozilla = Restaurant.builder()
-                .name("Gyozilla")
-                .establishmentYear(2012)
-                .menu(Arrays.asList(ramen))
-                .build();
-        restaurantService.create(sushiNova);
-        restaurantService.create(gyozilla);
-
+        dishService.create(ramen);
     }
 }

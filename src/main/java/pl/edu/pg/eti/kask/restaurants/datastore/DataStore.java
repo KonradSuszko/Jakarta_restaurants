@@ -45,6 +45,25 @@ public class DataStore {
         }
     }
 
+    public synchronized void updateRestaurant(Restaurant restaurant) throws IllegalArgumentException {
+        if (findRestaurant(restaurant.getName()).isPresent()){
+            restaurants.remove(findRestaurant(restaurant.getName()).get());
+            restaurants.add(CloningUtility.clone(restaurant));
+        } else {
+            throw new IllegalArgumentException(
+                    String.format("The restaurant with id \"%s\" does not exist", restaurant.getName()));
+        }
+    }
+
+    public synchronized void deleteRestaurant(Restaurant restaurant) {
+        if (findRestaurant(restaurant.getName()).isPresent()){
+            restaurants.remove(findRestaurant(restaurant.getName()).get());
+        } else {
+            throw new IllegalArgumentException(
+                    String.format("The restaurant with name \"%s\" does not exist", restaurant.getName()));
+        }
+    }
+
     /**
      * Seeks for all characters.
      *
@@ -67,6 +86,11 @@ public class DataStore {
                 .filter(dish -> dish.getId().equals(id))
                 .findFirst()
                 .map(CloningUtility::clone);
+    }
+
+    public synchronized List<Dish> findDishesByRestaurant(String name){
+        return dishes.stream().filter(dish -> dish.getRestaurant().getName().equals(name))
+                .collect(Collectors.toList());
     }
 
 

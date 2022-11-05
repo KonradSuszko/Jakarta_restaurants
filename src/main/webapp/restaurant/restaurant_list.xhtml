@@ -18,10 +18,22 @@
                         <h:outputText value="#{restaurant.establishmentYear}"/>
                     </h:column>
                     <h:column>
+                        <f:facet name="header">rating</f:facet>
+                        <h:outputText value="#{restaurant.rating}"/>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">view</f:facet>
                         <h:link outcome="/restaurant/restaurant_view.xhtml" value="view">
                             <f:param name="name" value="#{restaurant.name}"/>
                         </h:link>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">delete</f:facet>
+                        <h:form>
+                            <h:commandButton styleClass="ui-button ui-control" value="delete"
+                                             action="#{restaurantList.deleteAction(restaurant)}"/>
+
+                        </h:form>
                     </h:column>
                 </h:dataTable>
             </article>

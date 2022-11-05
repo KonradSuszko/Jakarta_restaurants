@@ -29,6 +29,8 @@ public class RestaurantsModel implements Serializable {
         private String name;
 
         private int establishmentYear;
+
+        private double rating;
     }
     @Singular
     private List<Restaurant> restaurants;
@@ -40,6 +42,7 @@ public class RestaurantsModel implements Serializable {
                     .map(restaurant -> RestaurantsModel.Restaurant.builder()
                             .name(restaurant.getName())
                             .establishmentYear(restaurant.getEstablishmentYear())
+                            .rating(restaurant.getRating())
                             .build())
                     .forEach(model::restaurant);
             return model.build();

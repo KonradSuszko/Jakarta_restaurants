@@ -11,7 +11,6 @@ import java.util.function.Function;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@ToString
 @EqualsAndHashCode
 public class DishModel {
     private Long id;
@@ -22,12 +21,15 @@ public class DishModel {
 
     private int weight;
 
+    private String restaurantName;
+
     public static Function<Dish, DishModel> entityToModelMapper() {
         return dish -> DishModel.builder()
                 .name(dish.getName())
                 .id(dish.getId())
                 .price(dish.getPrice())
                 .weight(dish.getWeight())
+                .restaurantName(dish.getRestaurant().getName())
                 .build();
     }
 }

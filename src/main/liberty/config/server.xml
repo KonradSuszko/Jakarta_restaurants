@@ -9,5 +9,24 @@
         <feature>jsp-2.3</feature>
         <feature>el-3.0</feature>
         <feature>jaxrs-2.1</feature>
+        <feature>jpa-2.2</feature>
+        <feature>ejb-3.2</feature>
+        <feature>appSecurity-3.0</feature>
+        <feature>passwordUtilities-1.0</feature>
+        <feature>websocket-1.1</feature>
     </featureManager>
+
+    <dataSource id="RestaurantDatabase" jndiName="jdbc/RestaurantDatabase">
+        <jdbcDriver javax.sql.XADataSource="org.h2.jdbcx.JdbcDataSource"
+                    javax.sql.ConnectionPoolDataSource="org.h2.jdbcx.JdbcDataSource"
+                    javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"
+                    libraryRef="H2JDBCLib"/>
+        <properties URL="jdbc:h2:mem:restaurants-database"/>
+    </dataSource>
+
+    <library id="H2JDBCLib">
+        <fileset dir="${wlp.install.dir}/usr/shared/resources" includes="h2-1.4.200.jar"/>
+    </library>
+
+    <logging consoleLogLevel="INFO"/>
 </server>
