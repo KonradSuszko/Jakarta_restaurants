@@ -23,7 +23,8 @@ import java.util.function.Function;
 @ToString
 @EqualsAndHashCode
 
-public class GetRestaurantResponse {
+public class
+GetRestaurantResponse {
     private String name;
 
     private int establishmentYear;

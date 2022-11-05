@@ -41,6 +41,6 @@ public class RestaurantRepository implements Repository<Restaurant, String> {
 
     @Override
     public void update(Restaurant entity){
-        throw new UnsupportedOperationException("Not implemented");
+        store.updateRestaurant(entity);
     }
 }

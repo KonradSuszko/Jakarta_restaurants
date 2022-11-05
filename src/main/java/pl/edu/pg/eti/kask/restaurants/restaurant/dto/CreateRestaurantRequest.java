@@ -26,7 +26,6 @@ import java.util.function.Supplier;
 public class CreateRestaurantRequest {
     private String name;
 
-
     private int establishmentYear;
 
     private double rating;

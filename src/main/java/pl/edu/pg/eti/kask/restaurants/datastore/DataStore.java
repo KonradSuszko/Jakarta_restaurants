@@ -57,6 +57,9 @@ public class DataStore {
 
     public synchronized void deleteRestaurant(Restaurant restaurant) {
         if (findRestaurant(restaurant.getName()).isPresent()){
+            for (Dish dish : findDishesByRestaurant(restaurant.getName())) {
+                deleteDish(dish.getId());
+            }
             restaurants.remove(findRestaurant(restaurant.getName()).get());
         } else {
             throw new IllegalArgumentException(
