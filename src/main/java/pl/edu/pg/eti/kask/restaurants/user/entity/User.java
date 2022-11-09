@@ -11,6 +11,10 @@ import lombok.experimental.SuperBuilder;
 import pl.edu.pg.eti.kask.restaurants.restaurant.entity.Restaurant;
 
 import javax.management.relation.Role;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,7 +25,10 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
+@Entity
+@Table(name = "users")
 public class User implements Serializable{
+    @Id
     private String login;
 
     private String name;
@@ -35,6 +42,7 @@ public class User implements Serializable{
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "user")
     private List<Restaurant> restaurants;
 
     @ToString.Exclude

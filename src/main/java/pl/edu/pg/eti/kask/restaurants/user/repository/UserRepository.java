@@ -52,6 +52,11 @@ public class UserRepository implements Repository<User, String> {
         store.updateUser(entity);
     }
 
+    @Override
+    public void detach(User entity){
+
+    }
+
     /**
      * Seeks for single user using login and password. Can be use in authentication module.
      *

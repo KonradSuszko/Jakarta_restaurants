@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 import pl.edu.pg.eti.kask.restaurants.restaurant.entity.Restaurant;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
@@ -19,7 +20,10 @@ import java.io.Serializable;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
+@Entity
+@Table(name = "dishes")
 public class Dish implements Serializable {
+    @Id
     private Long id;
 
     private String name;
@@ -28,5 +32,7 @@ public class Dish implements Serializable {
 
     private int weight;
 
+    @ManyToOne
+    @JoinColumn(name = "restaurant")
     private Restaurant restaurant;
 }
