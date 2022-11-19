@@ -35,7 +35,7 @@ public class Restaurant implements Serializable{
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE )
     private List<Dish> dishes;
 
     @ManyToOne

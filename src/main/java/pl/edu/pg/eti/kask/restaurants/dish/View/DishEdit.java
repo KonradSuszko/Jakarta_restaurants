@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -32,15 +33,21 @@ public class DishEdit implements Serializable {
     @Getter
     private List<RestaurantModel> restaurantsList;
 
-    @EJB
-    public void setDishService(DishService dishService) {
+    @Inject
+    public DishEdit(DishService dishService, RestaurantService restaurantService){
         this.dishService = dishService;
-    }
-
-    @EJB
-    public void setRestaurantService(RestaurantService restaurantService){
         this.restaurantService = restaurantService;
     }
+
+//    @EJB
+//    public void setDishService(DishService dishService) {
+//        this.dishService = dishService;
+//    }
+//
+//    @EJB
+//    public void setRestaurantService(RestaurantService restaurantService){
+//        this.restaurantService = restaurantService;
+//    }
 
     @Setter
     @Getter

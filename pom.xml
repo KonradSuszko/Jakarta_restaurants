@@ -34,6 +34,12 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>3.0.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -54,10 +60,27 @@
                     <plugin>
                         <groupId>io.openliberty.tools</groupId>
                         <artifactId>liberty-maven-plugin</artifactId>
-                        <version>3.2.3</version>
+                        <version>3.3</version>
+                        <configuration>
+                            <copyDependencies>
+                                <dependency>
+                                    <groupId>com.h2database</groupId>
+                                    <artifactId>h2</artifactId>
+                                </dependency>
+                            </copyDependencies>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.200</version>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
         </profile>
     </profiles>
 

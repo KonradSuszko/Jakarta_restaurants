@@ -11,6 +11,7 @@ import pl.edu.pg.eti.kask.restaurants.dish.service.DishService;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -38,13 +39,18 @@ public class DishView implements Serializable {
     @Getter
     private DishModel dish;
 
-    public DishView(){
-    }
-
-    @EJB
-    public void setDishService(DishService dishService){
+    @Inject
+    public DishView(DishService dishService){
         this.dishService = dishService;
     }
+
+//    public DishView(){
+//    }
+//
+//    @EJB
+//    public void setDishService(DishService dishService){
+//        this.dishService = dishService;
+//    }
 
     public void init() throws IOException {
         Optional<Dish> dish = dishService.find(id);

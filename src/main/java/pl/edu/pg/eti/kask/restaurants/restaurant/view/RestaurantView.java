@@ -41,19 +41,25 @@ public class RestaurantView implements Serializable {
 
     private DishService dishService;
 
-    public RestaurantView() {
-
-    }
-
-    @EJB
-    public void setRestaurantService(RestaurantService restaurantService){
+    @Inject
+    public RestaurantView(RestaurantService restaurantService, DishService dishService){
         this.restaurantService = restaurantService;
-    }
-
-    @EJB
-    public void setDishService(DishService dishService) {
         this.dishService = dishService;
     }
+
+//    public RestaurantView() {
+//
+//    }
+
+//    @EJB
+//    public void setRestaurantService(RestaurantService restaurantService){
+//        this.restaurantService = restaurantService;
+//    }
+//
+//    @EJB
+//    public void setDishService(DishService dishService) {
+//        this.dishService = dishService;
+//    }
 
     public void init() throws IOException {
         Optional<Restaurant> restaurant = restaurantService.find(name);

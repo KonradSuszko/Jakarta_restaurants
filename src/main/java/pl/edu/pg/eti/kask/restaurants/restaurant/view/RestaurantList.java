@@ -22,24 +22,25 @@ public class RestaurantList implements Serializable {
 
     private RestaurantsModel restaurants;
 
-    public RestaurantList(){
-
-    }
-
-    @EJB
-    public void setRestaurantService(RestaurantService restaurantService){
-        this.restaurantService = restaurantService;
-    }
-
-    @EJB
-    public void setDishService(DishService dishService){
-        this.dishService = dishService;
-    }
-
-//    @Inject
-//    private RestaurantList(RestaurantService restaurantService) {
+//    public RestaurantList(){
+//
+//    }
+//
+//    @EJB
+//    public void setRestaurantService(RestaurantService restaurantService){
 //        this.restaurantService = restaurantService;
 //    }
+//
+//    @EJB
+//    public void setDishService(DishService dishService){
+//        this.dishService = dishService;
+//    }
+
+    @Inject
+    private RestaurantList(RestaurantService restaurantService, DishService dishService) {
+        this.restaurantService = restaurantService;
+        this.dishService = dishService;
+    }
 
     public RestaurantsModel getRestaurants() {
         if (restaurants == null) {

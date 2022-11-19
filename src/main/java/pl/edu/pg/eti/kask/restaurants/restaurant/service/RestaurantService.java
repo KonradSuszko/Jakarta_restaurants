@@ -11,12 +11,12 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 
-@Stateless
-@LocalBean
+@ApplicationScoped
 @NoArgsConstructor
 public class RestaurantService {
 
@@ -42,14 +42,17 @@ public class RestaurantService {
         return repository.findAll();
     }
 
+    @Transactional
     public void create(Restaurant restaurant){
         repository.create(restaurant);
     }
 
+    @Transactional
     public void delete(String name){
         repository.delete(find(name).get());
     }
 
+    @Transactional
     public void update(Restaurant restaurant) {
         repository.update(restaurant);
     }
